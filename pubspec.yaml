@@ -1,0 +1,9 @@
+name: dungeon
+description: A Polymer Dart application to assist in playing the Dungeon! board game.
+dependencies:
+  core_elements: any
+  paper_elements: any
+  polymer: any
+transformers:
+- polymer:
+    entry_points: web/index.html
