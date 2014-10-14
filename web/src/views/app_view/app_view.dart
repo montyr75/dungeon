@@ -10,35 +10,15 @@ class AppView extends PolymerElement {
 
   static const CLASS_NAME = "AppView";
 
-  static const String DATA_URL = "resources/data/dungeon.json";
+  static const String ENCOUNTERS_DATA_PATH = "resources/data/encounters.json";
 
-  @observable List<Card> monsters_level1;
-  @observable List<Card> monsters_level2 = toObservable([]);
+  List<List<Card>> encounters;
 
   AppView.created() : super.created() {
-    HttpRequest.getString(DATA_URL).then((String jsonStr) {
-      Map data = JSON.decode(jsonStr);
+    HttpRequest.getString(ENCOUNTERS_DATA_PATH).then((String jsonStr) {
+      encounters = JSON.decode(jsonStr).map((List<Map> level) => level.map((Map card) => card['type'] == "monster" ?  new Monster.fromMap(card) : new Trap.fromMap(card)).toList()).toList();
 
-      List<Map> level1 = data['level1'];
-      monsters_level1 = toObservable(level1.map((Map card) {
-        if (card['type'] == "monster") {
-          return new Monster.fromMap(card);
-        }
-        else {
-          return new Trap.fromMap(card);
-        }
-      }).toList());
-
-//      level1.forEach((Map card) {
-//        if (card['type'] == "monster") {
-//          monsters_level1.add(new Monster.fromMap(card));
-//        }
-//        else {
-//          monsters_level1.add(new Trap.fromMap(card));
-//        }
-//      });
-
-      monsters_level1.forEach(print);
+      print(encounters);
     });
   }
 
