@@ -1,0 +1,137 @@
+[
+  [
+    {
+      "name": "Sack of Gold",
+      "type": "treasure",
+      "level": 1,
+      "image": "sackofgold.jpg",
+      "value": 250
+    },
+    {
+      "name": "Sack of Gold",
+      "type": "treasure",
+      "level": 1,
+      "image": "sackofgold.jpg",
+      "value": 250
+    },
+    {
+      "name": "Sack of Gold",
+      "type": "treasure",
+      "level": 1,
+      "image": "sackofgold.jpg",
+      "value": 500
+    },
+    {
+      "name": "Sack of Gold",
+      "type": "treasure",
+      "level": 1,
+      "image": "sackofgold.jpg",
+      "value": 500
+    },
+    {
+      "name": "Sack of Gold",
+      "type": "treasure",
+      "level": 1,
+      "image": "sackofgold.jpg",
+      "value": 750
+    },
+    {
+      "name": "Sack of Gold",
+      "type": "treasure",
+      "level": 1,
+      "image": "sackofgold.jpg",
+      "value": 750
+    },
+    {
+      "name": "Sack of Gold",
+      "type": "treasure",
+      "level": 1,
+      "image": "sackofgold.jpg",
+      "value": 1000
+    },
+    {
+      "name": "Magic Sword",
+      "type": "treasure",
+      "level": 1,
+      "image": "magicsword.jpg",
+      "value": 500,
+      "description": "Place this face up in front of you and roll 2d6. 2-11: +1, 12: +2"
+    },
+    {
+      "name": "Secret Door Card",
+      "type": "treasure",
+      "level": 1,
+      "image": "secretdoorcard.jpg",
+      "value": 500,
+      "description": "You can move through all secret doors."
+    }
+  ],
+
+  [
+    {
+      "name": "Sack of Gold",
+      "type": "treasure",
+      "level": 2,
+      "image": "sackofgold.jpg",
+      "value": 500
+    },
+    {
+      "name": "Sack of Gold",
+      "type": "treasure",
+      "level": 2,
+      "image": "sackofgold.jpg",
+      "value": 750
+    },
+    {
+      "name": "Sack of Gold",
+      "type": "treasure",
+      "level": 2,
+      "image": "sackofgold.jpg",
+      "value": 1000
+    },
+    {
+      "name": "Sack of Gold",
+      "type": "treasure",
+      "level": 2,
+      "image": "sackofgold.jpg",
+      "value": 1000
+    },
+    {
+      "name": "Silver Cup",
+      "type": "treasure",
+      "level": 2,
+      "image": "silvercup.jpg",
+      "value": 1000
+    },
+    {
+      "name": "Silver Cup",
+      "type": "treasure",
+      "level": 2,
+      "image": "silvercup.jpg",
+      "value": 1000
+    },
+    {
+      "name": "Silver Ring",
+      "type": "treasure",
+      "level": 2,
+      "image": "silverring.jpg",
+      "value": 2000
+    },
+    {
+      "name": "Magic Sword",
+      "type": "treasure",
+      "level": 2,
+      "image": "magicsword.jpg",
+      "value": 1000,
+      "description": "Place this face up in front of you and roll 2d6. 2-9: +1, 10-12: +2"
+    },
+    {
+      "name": "Secret Door Card",
+      "type": "treasure",
+      "level": 2,
+      "image": "secretdoorcard.jpg",
+      "value": 500,
+      "description": "You can move through all secret doors."
+    }
+  ]
+]
