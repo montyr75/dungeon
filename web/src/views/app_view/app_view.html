@@ -1,6 +1,7 @@
 <link rel="import" href="packages/polymer/polymer.html">
 <link rel="import" href="packages/core_elements/core_header_panel.html">
 <link rel="import" href="packages/core_elements/core_toolbar.html">
+<link rel="import" href="packages/core_elements/core_ajax_dart.html">
 <link rel="import" href="packages/paper_elements/paper_button.html">
 
 <polymer-element name="app-view">
@@ -19,6 +20,8 @@
         text-align: center;
       }
     </style>
+
+    <core-ajax-dart auto url="{{encountersDataPath}}" handleAs="json" on-core-response="{{encountersLoaded}}"></core-ajax-dart>
 
     <core-header-panel flex>
       <core-toolbar>

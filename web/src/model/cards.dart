@@ -8,6 +8,8 @@ abstract class Card {
 
   Card();
 
+  Card.fromData(String this._name, String this._type, int this._level, String this._img);
+
   @override String toString() => "$_name ($_type)";
 
   String get name => _name;
@@ -24,12 +26,8 @@ class Monster extends Card {
   int _fireball;
   int _lightningBolt;
 
-  Monster(String name, String type, int level, String img, int this._rogue, int this._cleric, int this._fighter, int this._wizard, int this._fireball, int this._lightningBolt) {
-    _name = name;
-    _type = type;
-    _level = level;
-    _img = img;
-  }
+  Monster(String name, String type, int level, String img, int this._rogue, int this._cleric, int this._fighter, int this._wizard, int this._fireball, int this._lightningBolt)
+    : super.fromData(name, type, level, img);
 
   Monster.fromMap(Map map) : this(map["name"], map["type"], map["level"], map["img"], map["rogue"], map["cleric"], map["fighter"], map["wizard"], map["fireball"], map["lightningBolt"]);
 
@@ -44,12 +42,10 @@ class Monster extends Card {
 class Trap extends Card {
   String _description;
 
-  Trap(String name, String type, int level, String img, String this._description) {
-    _name = name;
-    _type = type;
-    _level = level;
-    _img = img;
-  }
+  Trap(String name, String type, int level, String img, String this._description)
+    : super.fromData(name, type, level, img);
 
   Trap.fromMap(Map map) : this(map["name"], map["type"], map["level"], map["img"], map["description"]);
+
+  String get description => _description;
 }
