@@ -9,7 +9,7 @@ class AppView extends PolymerElement {
 
   static const CLASS_NAME = "AppView";
 
-  static const String ENCOUNTERS_DATA_PATH = "resources/data/encounters.json";
+  static const String ENCOUNTERS_DATA_URL = "resources/data/encounters.json";
 
   List<List<Card>> encounters;
 
@@ -45,6 +45,6 @@ class AppView extends PolymerElement {
     return instance;
   }
 
-  String get encountersDataPath => ENCOUNTERS_DATA_PATH;
+  String get encountersDataURL => ENCOUNTERS_DATA_URL;
 }
 
