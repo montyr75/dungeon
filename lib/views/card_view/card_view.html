@@ -1,0 +1,88 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../../packages/core_elements/core_header_panel.html">
+<link rel="import" href="../../../../packages/core_elements/core_toolbar.html">
+<link rel="import" href="../../../../packages/core_elements/core_icon_button.html">
+
+<polymer-element name="card-view">
+  <template>
+    <style>
+      :host {
+        width: 400px;
+        border: 1px solid #929292;
+      }
+
+      .card-title {
+        text-align: center;
+      }
+
+      #description {
+        padding: 0 10px;
+      }
+
+      #attack-table-wrap {
+        margin: auto;
+        margin-top: 5px;
+      }
+
+      #attack-table {
+        border-collapse: collapse;
+      }
+
+      #attack-table td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 0 10px;
+      }
+
+      #attack-table td img{
+        width: 32px;
+        height: 32px;
+        padding: 0;
+      }
+    </style>
+
+    <div layout vertical>
+      <div layout horizontal center>
+        <core-icon-button icon="arrow-back"></core-icon-button>
+        <h4 class="card-title" flex>{{card.name}}</h4>
+        <core-icon-button icon="close"></core-icon-button>
+      </div>
+
+      <img _src="{{cardImagePath}}{{card.img}}">
+
+      <template if="{{card.type == trap}}">
+        <p id="description">{{card.description}}</p>
+      </template>
+
+      <template if="{{card.type == monster}}">
+        <div id="attack-table-wrap">
+          <table id="attack-table">
+            <thead>
+              <tr>
+                <td><img src="../../../../resources/images/rogue.png"></td>
+                <td><img src="../../../../resources/images/cleric.png"></td>
+                <td><img src="../../../../resources/images/fighter.png"></td>
+                <td><img src="../../../../resources/images/wizard.png"></td>
+                <td><img src="../../../../resources/images/fireball.png"></td>
+                <td><img src="../../../../resources/images/lightning_bolt.png"></td>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>{{card.rogue}}</td>
+                <td>{{card.cleric}}</td>
+                <td>{{card.fighter}}</td>
+                <td>{{card.wizard}}</td>
+                <td>{{card.fireball}}</td>
+                <td>{{card.lightningBolt}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </template>
+    </div>
+  </template>
+
+  <script type="application/dart" src="card_view.dart"></script>
+</polymer-element>

@@ -7,11 +7,13 @@ import '../../model/cards.dart';
 @CustomTag('app-view')
 class AppView extends PolymerElement {
 
-  static const CLASS_NAME = "AppView";
+  static const String CLASS_NAME = "AppView";
 
   static const String ENCOUNTERS_DATA_URL = "resources/data/encounters.json";
 
   List<List<Card>> encounters;
+
+  @observable Card currentCard;
 
   AppView.created() : super.created();
 
@@ -31,7 +33,7 @@ class AppView extends PolymerElement {
 
     encounters = detail['response'].map((List<Map> level) => level.map((Map card) => createCardInstance(card)).toList()).toList();
 
-    print(encounters);
+    currentCard = encounters[0][5];
   }
 
   Card createCardInstance(Map card) {
