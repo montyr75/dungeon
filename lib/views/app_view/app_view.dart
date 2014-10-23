@@ -33,7 +33,7 @@ class AppView extends PolymerElement {
 
     encounters = detail['response'].map((List<Map> level) => level.map((Map card) => createCardInstance(card)).toList()).toList();
 
-    currentCard = encounters[0][5];
+    currentCard = encounters[0][2];
   }
 
   Card createCardInstance(Map card) {
