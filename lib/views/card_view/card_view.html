@@ -41,7 +41,7 @@
       }
     </style>
 
-    <div layout vertical>
+    <div layout vertical hidden?="{{card == null}}">
       <div layout horizontal center>
         <core-icon-button icon="arrow-back"></core-icon-button>
         <h4 class="card-title" flex>{{card.name}}</h4>

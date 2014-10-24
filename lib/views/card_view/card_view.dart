@@ -1,7 +1,7 @@
 library card_view;
 
 import 'package:polymer/polymer.dart';
-import 'package:dungeon/model/cards.dart';
+import '../../model/cards.dart';
 
 @CustomTag('card-view')
 class CardView extends PolymerElement {
