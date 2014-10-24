@@ -2,6 +2,8 @@
 <link rel="import" href="../../../../packages/core_elements/core_header_panel.html">
 <link rel="import" href="../../../../packages/core_elements/core_toolbar.html">
 <link rel="import" href="../../../../packages/core_elements/core_icon_button.html">
+<link rel="import" href="../../../../packages/core_elements/core_dropdown.html">
+<link rel="import" href="../../components/html_display/html_display.html">
 
 <polymer-element name="card-view">
   <template>
@@ -20,7 +22,6 @@
       }
 
       #attack-table-wrap {
-        margin: auto;
         margin-top: 5px;
       }
 
@@ -39,6 +40,19 @@
         height: 32px;
         padding: 0;
       }
+
+      #attack-popup {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        /*top: 0;*/
+        background-color: black;
+        color: white;
+        padding: 5px;
+        max-width: 400px;
+        max-height: 100px;
+      }
     </style>
 
     <div layout vertical>
@@ -48,16 +62,21 @@
         <core-icon-button icon="close" on-tap="{{discard}}"></core-icon-button>
       </div>
 
-      <template if="{{card != null}}">
-        <img _src="{{cardImagePath}}{{card.img}}">
-      </template>
+      <div relative>
+        <img id="card-image" _src="{{cardImagePath}}{{card.img}}">
+        <core-dropdown id="attack-popup" relatedTarget="{{$['card-image']}}">
+          <div id="attack-text" is="html-display" htmlContent="{{attackText}}"></div>
+        </core-dropdown>
+      </div>
 
       <template if="{{card.type == trap}}">
         <p id="description">{{card.description}}</p>
       </template>
 
       <template if="{{card.type == monster}}">
-        <div id="attack-table-wrap">
+        <div id="attack-table-wrap" layout horizontal>
+          <core-icon-button id="attack-button" icon="menu" on-tap="{{attack}}"></core-icon-button>
+
           <table id="attack-table">
             <thead>
               <tr>
@@ -81,6 +100,8 @@
               </tr>
             </tbody>
           </table>
+
+          <core-icon-button id="slot-button" icon="menu"></core-icon-button>
         </div>
       </template>
     </div>
