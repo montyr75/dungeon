@@ -12,7 +12,7 @@ class DungeonModel extends PolymerElement {
 
   static const String ENCOUNTERS_DATA_URL = "resources/data/encounters.json";
 
-  List<Deck<Card>> encounters;
+  List<Deck<Card>> _encounters;
 
   DungeonModel.created() : super.created();
 
@@ -31,9 +31,19 @@ class DungeonModel extends PolymerElement {
 //      }).toList();
 
     List<List<Card>> encounterCards = detail['response'].map((List<Map> level) => level.map((Map card) => _createCardInstance(card)).toList()).toList();
-    encounters = _createDecks(encounterCards);
+    _encounters = _createDecks(encounterCards);
+  }
 
-    fire('encounter-decks-created');
+  Card drawEncounterCard(int level, {bool autoDiscard: false}) {
+    return _encounters[level - 1].draw(autoDiscard: autoDiscard);
+  }
+
+  void discardEncounterCard(Card card) {
+    _encounters[card.level - 1].discard(card);
+  }
+
+  void returnCardToDeck(Card card) {
+    _encounters[card.level - 1].add(card);
   }
 
   Card _createCardInstance(Map card) {

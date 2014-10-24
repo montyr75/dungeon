@@ -23,10 +23,26 @@ class AppView extends PolymerElement {
     model = $['model'];
   }
 
-  void encounterDecksCreated(Event event, var detail, Element target) {
-    print("$CLASS_NAME::encounterDecksCreated()");
+  void drawEncounterCard(Event event, var detail, Element target) {
+    print("$CLASS_NAME::drawEncounterCard()");
 
-    currentCard = model.encounters[0].draw();
+    currentCard = model.drawEncounterCard(int.parse(target.dataset['level']));
+  }
+
+  void discard(Event event, Card detail, Element target) {
+    print("$CLASS_NAME::discard()");
+
+    currentCard = null;
+
+    model.discardEncounterCard(detail);
+  }
+
+  void returnToDeck(Event event, Card detail, Element target) {
+    print("$CLASS_NAME::returnToDeck()");
+
+    currentCard = null;
+
+    model.returnCardToDeck(detail);
   }
 }
 

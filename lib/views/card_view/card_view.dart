@@ -1,6 +1,7 @@
 library card_view;
 
 import 'package:polymer/polymer.dart';
+import 'dart:html';
 import '../../model/cards.dart';
 
 @CustomTag('card-view')
@@ -25,12 +26,24 @@ class CardView extends PolymerElement {
   void cardChanged(oldValue) {
     print("$CLASS_NAME::cardChanged()");
 
+    if (card == null) {
+      return;
+    }
+
     if (card.type == Card.MONSTER || card.type == Card.TRAP) {
       cardImagePath = ENCOUNTERS_IMAGE_PATH;
     }
     else {
       cardImagePath = TREASURES_IMAGE_PATH;
     }
+  }
+
+  void returnToDeck(Event event, var detail, Element target) {
+    fire('return-to-deck', detail: card);
+  }
+
+  void discard(Event event, var detail, Element target) {
+    fire('discard', detail: card);
   }
 
   String get monster => Card.MONSTER;

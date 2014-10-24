@@ -1,14 +1,8 @@
 <link rel="import" href="../../../packages/polymer/polymer.html">
 <link rel="import" href="../../../packages/core_elements/core_ajax_dart.html">
 
-<polymer-element name="dungeon-model">
+<polymer-element name="dungeon-model" hidden>
   <template>
-    <style>
-      :host {
-        display: none;
-      }
-    </style>
-
     <core-ajax-dart auto url="{{encountersDataURL}}" handleAs="json" on-core-response="{{encountersLoaded}}"></core-ajax-dart>
   </template>
 

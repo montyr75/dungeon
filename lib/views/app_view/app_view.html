@@ -21,7 +21,7 @@
       }
     </style>
 
-    <dungeon-model id="model" on-encounter-decks-created="{{encounterDecksCreated}}"></dungeon-model>
+    <dungeon-model id="model"></dungeon-model>
 
     <core-header-panel flex>
       <core-toolbar>
@@ -29,7 +29,16 @@
       </core-toolbar>
 
       <div id="wrapper" fit layout vertical center>
-        <card-view card="{{currentCard}}"></card-view>
+        <div layout horizontal around-justified style="width: 100%; margin-bottom: 25px;">
+          <paper-button raised on-tap="{{drawEncounterCard}}" data-level="1" disabled?="{{currentCard != null}}">Level 1</paper-button>
+          <paper-button raised on-tap="{{drawEncounterCard}}" data-level="2" disabled?="{{currentCard != null}}">Level 2</paper-button>
+          <paper-button raised on-tap="{{drawEncounterCard}}" data-level="3" disabled?="{{currentCard != null}}">Level 3</paper-button>
+          <paper-button raised on-tap="{{drawEncounterCard}}" data-level="4" disabled?="{{currentCard != null}}">Level 4</paper-button>
+          <paper-button raised on-tap="{{drawEncounterCard}}" data-level="5" disabled?="{{currentCard != null}}">Level 5</paper-button>
+          <paper-button raised on-tap="{{drawEncounterCard}}" data-level="6" disabled?="{{currentCard != null}}">Level 6</paper-button>
+        </div>
+
+        <card-view card="{{currentCard}}" hidden?="{{currentCard == null}}" on-discard="{{discard}}" on-return-to-deck="{{returnToDeck}}"></card-view>
       </div>
     </core-header-panel>
   </template>
