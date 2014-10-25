@@ -13,6 +13,7 @@ class CardView extends PolymerElement {
 
   static const String ENCOUNTERS_IMAGE_PATH = "resources/images/encounters/";
   static const String TREASURES_IMAGE_PATH = "resources/images/treasures/";
+  static const String ATTACK_ICONS_PATH = "resources/images/";
 
   @published Card card;
 
@@ -86,5 +87,6 @@ class CardView extends PolymerElement {
   String get monster => Card.MONSTER;
   String get trap => Card.TRAP;
   String get treasure => Card.TREASURE;
+  String get attackIconsPath => ATTACK_ICONS_PATH;
 }
 
