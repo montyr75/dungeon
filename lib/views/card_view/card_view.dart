@@ -19,6 +19,8 @@ class CardView extends PolymerElement {
   @observable String cardImagePath;
   @observable String attackText;
 
+  Math.Random _random = new Math.Random(new DateTime.now().millisecondsSinceEpoch);
+
   CardView.created() : super.created();
 
   @override void attached() {
@@ -80,7 +82,7 @@ class CardView extends PolymerElement {
   }
 
   int _rollDie(int sides) {
-    return new Math.Random().nextInt(sides) + 1;
+    return _random.nextInt(sides) + 1;
   }
 
   String get monster => Card.MONSTER;
