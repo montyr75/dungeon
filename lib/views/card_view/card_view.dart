@@ -5,11 +5,10 @@ import 'package:core_elements/core_dropdown.dart';
 import 'dart:html';
 import 'dart:math' as Math;
 import '../../model/cards.dart';
+import '../../model/global.dart';
 
 @CustomTag('card-view')
 class CardView extends PolymerElement {
-
-  static const String CLASS_NAME = "CardView";
 
   static const String ENCOUNTERS_IMAGE_PATH = "resources/images/encounters/";
   static const String TREASURES_IMAGE_PATH = "resources/images/treasures/";
@@ -24,11 +23,11 @@ class CardView extends PolymerElement {
 
   @override void attached() {
     super.attached();
-    print("$CLASS_NAME::attached()");
+    log.info("$runtimeType::attached()");
   }
 
   void cardChanged(oldValue) {
-    print("$CLASS_NAME::cardChanged()");
+    log.info("$runtimeType::cardChanged()");
 
     if (card == null) {
       cardImagePath = null;
@@ -52,7 +51,7 @@ class CardView extends PolymerElement {
   }
 
   void attack(Event event, var detail, Element target) {
-    print("$CLASS_NAME::attack()");
+    log.info("$runtimeType::attack()");
 
     CoreDropdown popup = shadowRoot.querySelector("#attack-popup");
     popup.opened = !popup.opened;

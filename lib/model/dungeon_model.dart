@@ -2,13 +2,12 @@ library dungeon.model;
 
 import 'package:polymer/polymer.dart';
 import 'dart:html';
+import 'global.dart';
 import 'cards.dart';
 import 'deck.dart';
 
 @CustomTag('dungeon-model')
 class DungeonModel extends PolymerElement {
-
-  static const String CLASS_NAME = "DungeonModel";
 
   static const String ENCOUNTERS_DATA_URL = "resources/data/encounters.json";
 
@@ -18,11 +17,11 @@ class DungeonModel extends PolymerElement {
 
   @override void attached() {
     super.attached();
-    print("$CLASS_NAME::attached()");
+    log.info("$runtimeType::attached()");
   }
 
   void encountersLoaded(Event event, var detail, Element target) {
-    print("$CLASS_NAME::encountersLoaded()");
+    log.info("$runtimeType::encountersLoaded()");
 
 //      encounters = detail['response'].map((List<Map> level) {
 //        return level.map((Map card) {

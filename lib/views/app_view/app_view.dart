@@ -2,13 +2,15 @@ library app_view;
 
 import 'dart:html';
 import 'package:polymer/polymer.dart';
+import '../../model/global.dart';
 import '../../model/dungeon_model.dart';
 import '../../model/cards.dart';
 
 @CustomTag('app-view')
 class AppView extends PolymerElement {
 
-  static const String CLASS_NAME = "AppView";
+  // initialize system log
+  bool _logInitialized = initLog();
 
   DungeonModel model;
 
@@ -18,19 +20,19 @@ class AppView extends PolymerElement {
 
   @override void attached() {
     super.attached();
-    print("$CLASS_NAME::attached()");
+    log.info("$runtimeType::attached()");
 
     model = $['model'];
   }
 
   void drawEncounterCard(Event event, var detail, Element target) {
-    print("$CLASS_NAME::drawEncounterCard()");
+    log.info("$runtimeType::drawEncounterCard()");
 
     currentCard = model.drawEncounterCard(int.parse(target.dataset['level']));
   }
 
   void discard(Event event, Card detail, Element target) {
-    print("$CLASS_NAME::discard()");
+    log.info("$runtimeType::discard()");
 
     currentCard = null;
 
@@ -38,7 +40,7 @@ class AppView extends PolymerElement {
   }
 
   void returnToDeck(Event event, Card detail, Element target) {
-    print("$CLASS_NAME::returnToDeck()");
+    log.info("$runtimeType::returnToDeck()");
 
     currentCard = null;
 
