@@ -12,7 +12,7 @@ class AppView extends PolymerElement {
   // initialize system log
   bool _logInitialized = initLog();
 
-  DungeonModel model;
+  @observable DungeonModel model;
 
   @observable Card currentCard;
 
@@ -45,6 +45,14 @@ class AppView extends PolymerElement {
     currentCard = null;
 
     model.returnCardToDeck(detail);
+  }
+
+  void slotCard(Event event, Card detail, Element target) {
+    log.info("$runtimeType::slotCard()");
+
+    currentCard = null;
+
+    model.slotCard(detail);
   }
 }
 

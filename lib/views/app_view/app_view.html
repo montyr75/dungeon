@@ -1,6 +1,7 @@
 <link rel="import" href="../../../../packages/polymer/polymer.html">
 <link rel="import" href="../../../../packages/core_elements/core_header_panel.html">
 <link rel="import" href="../../../../packages/core_elements/core_toolbar.html">
+<link rel="import" href="../../../../packages/core_elements/core_drawer_panel.html">
 <link rel="import" href="../../../../packages/paper_elements/paper_button.html">
 <link rel="import" href="../../model/dungeon_model.html">
 <link rel="import" href="../card_view/card_view.html">
@@ -19,26 +20,49 @@
       .app-title {
         text-align: center;
       }
+
+      div[drawer] {
+        border-left: 2px inset #424B4B;
+        background-color: #212121;
+        -webkit-user-select: none;
+        user-select: none;
+      }
     </style>
 
     <dungeon-model id="model"></dungeon-model>
 
-    <core-header-panel flex>
+    <core-header-panel flex mode="seamed">
       <core-toolbar>
         <h2 class="app-title" flex>Dungeon!</h2>
       </core-toolbar>
 
-      <div id="wrapper" fit layout vertical center>
-        <div layout horizontal around-justified style="width: 100%; margin-bottom: 25px;">
-          <paper-button raised on-tap="{{drawEncounterCard}}" data-level="1" disabled?="{{currentCard != null}}">Level 1</paper-button>
-          <paper-button raised on-tap="{{drawEncounterCard}}" data-level="2" disabled?="{{currentCard != null}}">Level 2</paper-button>
-          <paper-button raised on-tap="{{drawEncounterCard}}" data-level="3" disabled?="{{currentCard != null}}">Level 3</paper-button>
-          <paper-button raised on-tap="{{drawEncounterCard}}" data-level="4" disabled?="{{currentCard != null}}">Level 4</paper-button>
-          <paper-button raised on-tap="{{drawEncounterCard}}" data-level="5" disabled?="{{currentCard != null}}">Level 5</paper-button>
-          <paper-button raised on-tap="{{drawEncounterCard}}" data-level="6" disabled?="{{currentCard != null}}">Level 6</paper-button>
-        </div>
+      <div id="wrapper" fit>
+        <core-drawer-panel rightDrawer>
+          <div drawer>
+            <h4 style="margin-left: 35px;">Slots</h4>
+            <table>
+              <tbody>
+                <tr template repeat="{{card in model.slots | enumerate}}">
+                  <td style="width: 50px; text-align: right;">{{card.index + 1}}</td>
+                  <td>{{card.value.name}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-        <card-view card="{{currentCard}}" hidden?="{{currentCard == null}}" on-discard="{{discard}}" on-return-to-deck="{{returnToDeck}}"></card-view>
+          <div main fit layout vertical center>
+            <div layout horizontal around-justified wrap style="width: 100%; margin-bottom: 25px;">
+              <paper-button raised on-tap="{{drawEncounterCard}}" data-level="1" disabled?="{{currentCard != null}}">Level 1</paper-button>
+              <paper-button raised on-tap="{{drawEncounterCard}}" data-level="2" disabled?="{{currentCard != null}}">Level 2</paper-button>
+              <paper-button raised on-tap="{{drawEncounterCard}}" data-level="3" disabled?="{{currentCard != null}}">Level 3</paper-button>
+              <paper-button raised on-tap="{{drawEncounterCard}}" data-level="4" disabled?="{{currentCard != null}}">Level 4</paper-button>
+              <paper-button raised on-tap="{{drawEncounterCard}}" data-level="5" disabled?="{{currentCard != null}}">Level 5</paper-button>
+              <paper-button raised on-tap="{{drawEncounterCard}}" data-level="6" disabled?="{{currentCard != null}}">Level 6</paper-button>
+            </div>
+
+            <card-view card="{{currentCard}}" hidden?="{{currentCard == null}}" on-discard="{{discard}}" on-return-to-deck="{{returnToDeck}}" on-slot="{{slotCard}}"></card-view>
+          </div>
+        </core-drawer-panel>
       </div>
     </core-header-panel>
   </template>

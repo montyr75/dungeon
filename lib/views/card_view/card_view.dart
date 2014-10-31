@@ -81,6 +81,10 @@ class CardView extends PolymerElement {
     }
   }
 
+  void slot(Event event, var detail, Element target) {
+    fire('slot', detail: card);
+  }
+
   int _rollDie(int sides) {
     return _random.nextInt(sides) + 1;
   }

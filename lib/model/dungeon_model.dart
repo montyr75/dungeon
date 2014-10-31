@@ -12,6 +12,7 @@ class DungeonModel extends PolymerElement {
   static const String ENCOUNTERS_DATA_URL = "resources/data/encounters.json";
 
   List<Deck<Card>> _encounters;
+  @observable List<Card> slots = toObservable(new List.filled(12, null));
 
   DungeonModel.created() : super.created();
 
@@ -43,6 +44,15 @@ class DungeonModel extends PolymerElement {
 
   void returnCardToDeck(Card card) {
     _encounters[card.level - 1].add(card);
+  }
+
+  void slotCard(Card card) {
+    for (int i = 0; i < slots.length; i++) {
+      if (slots[i] == null) {
+        slots[i] = card;
+        break;
+      }
+    }
   }
 
   Card _createCardInstance(Map card) {
