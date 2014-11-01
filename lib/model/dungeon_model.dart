@@ -39,24 +39,35 @@ class DungeonModel extends PolymerElement {
   }
 
   void discardEncounterCard(Card card) {
+    card.slotIndex = null;
     _encounters[card.level - 1].discard(card);
   }
 
   void returnCardToDeck(Card card) {
+    card.slotIndex = null;
     _encounters[card.level - 1].add(card);
   }
 
   void slotCard(Card card) {
+    if (card.slotIndex != null) {
+      slots[card.slotIndex] = card;
+      return;
+    }
+
     for (int i = 0; i < slots.length; i++) {
       if (slots[i] == null) {
         slots[i] = card;
+        card.slotIndex = i;
         break;
       }
     }
   }
 
-  void unslotCard(int index) {
+  Card unslotCard(int index) {
+    Card card = slots[index];
     slots[index] = null;
+
+    return card;
   }
 
   Card _createCardInstance(Map card) {

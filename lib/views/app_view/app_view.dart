@@ -64,8 +64,7 @@ class AppView extends PolymerElement {
       return;
     }
 
-    currentCard = model.slots[index];
-    model.unslotCard(index);
+    currentCard = model.unslotCard(index);
   }
 }
 

@@ -15,6 +15,8 @@ class Card {
   String _img;
   String _description;
 
+  int slotIndex;    // if this card is slotted, it should remember which slot it belongs to
+
   Card();
 
   Card.fromData(String this._name, String this._type, int this._level, String this._img, [this._description]);
