@@ -42,7 +42,7 @@
             <h4 style="margin-left: 35px;">Slots</h4>
             <table>
               <tbody>
-                <tr template repeat="{{card in model.slots | enumerate}}">
+                <tr template repeat="{{card in model.slots | enumerate}}" data-index="{{card.index}}" on-tap="{{unslotCard}}">
                   <td style="width: 50px; text-align: right;">{{card.index + 1}}</td>
                   <td>{{card.value.name}}</td>
                 </tr>

@@ -55,6 +55,10 @@ class DungeonModel extends PolymerElement {
     }
   }
 
+  void unslotCard(int index) {
+    slots[index] = null;
+  }
+
   Card _createCardInstance(Map card) {
     Card instance;
 

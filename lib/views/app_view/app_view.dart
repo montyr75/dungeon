@@ -54,5 +54,18 @@ class AppView extends PolymerElement {
 
     model.slotCard(detail);
   }
+
+  void unslotCard(Event event, var detail, Element target) {
+    log.info("$runtimeType::unslotCard()");
+
+    int index = int.parse(target.dataset['index']);
+
+    if (currentCard != null || model.slots[index] == null) {
+      return;
+    }
+
+    currentCard = model.slots[index];
+    model.unslotCard(index);
+  }
 }
 
