@@ -27,6 +27,10 @@
         -webkit-user-select: none;
         user-select: none;
       }
+
+      div[main] {
+        overflow-y: auto;
+      }
     </style>
 
     <dungeon-model id="model"></dungeon-model>
@@ -50,7 +54,7 @@
             </table>
           </div>
 
-          <div main fit layout vertical center>
+          <div main layout vertical center>
             <div layout horizontal around-justified wrap style="width: 100%; margin-bottom: 25px;">
               <paper-button raised on-tap="{{drawEncounterCard}}" data-level="1" disabled?="{{currentCard != null}}">Level 1</paper-button>
               <paper-button raised on-tap="{{drawEncounterCard}}" data-level="2" disabled?="{{currentCard != null}}">Level 2</paper-button>
