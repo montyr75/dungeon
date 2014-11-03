@@ -22,7 +22,7 @@
       }
 
       div[drawer] {
-        border-left: 2px inset #424B4B;
+        border-left: 2px inset lightgray;
         background-color: #212121;
         -webkit-user-select: none;
         user-select: none;
@@ -30,6 +30,24 @@
 
       div[main] {
         overflow-y: auto;
+      }
+
+      .slots {
+        cursor: default;
+      }
+
+      .slot {
+        padding-left: 5px;
+      }
+
+      .slot:hover {
+        background-color: lightgray;
+        color: black;
+      }
+
+      .slot:active {
+        background-color: darkgray;
+        color: black;
       }
     </style>
 
@@ -43,12 +61,12 @@
       <div id="wrapper" fit>
         <core-drawer-panel rightDrawer>
           <div drawer>
-            <h4 style="margin-left: 35px;">Slots</h4>
-            <table>
+            <h4 style="margin-left: 15px;">Slots</h4>
+            <table class="slots" style="width: 100%;">
               <tbody>
                 <tr template repeat="{{card in model.slots | enumerate}}" data-index="{{card.index}}" on-tap="{{unslotCard}}">
-                  <td style="width: 50px; text-align: right;">{{card.index + 1}}</td>
-                  <td>{{card.value.name}}</td>
+                  <td style="width: 30px; text-align: right;">{{card.index + 1}}</td>
+                  <td class="slot">{{card.value.name}}</td>
                 </tr>
               </tbody>
             </table>
