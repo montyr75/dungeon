@@ -48,19 +48,24 @@ class DungeonModel extends PolymerElement {
     _encounters[card.level - 1].add(card);
   }
 
-  void slotCard(Card card) {
+  bool slotCard(Card card) {
+    // returns true if slotting was successful
+
     if (card.slotIndex != null) {
       slots[card.slotIndex] = card;
-      return;
+      return true;
     }
 
     for (int i = 0; i < slots.length; i++) {
       if (slots[i] == null) {
         slots[i] = card;
         card.slotIndex = i;
-        break;
+        return true;
       }
     }
+
+    // if we get here, there was nowhere for the card to go
+    return false;
   }
 
   Card unslotCard(int index) {

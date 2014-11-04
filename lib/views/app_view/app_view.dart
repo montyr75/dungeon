@@ -50,9 +50,10 @@ class AppView extends PolymerElement {
   void slotCard(Event event, Card detail, Element target) {
     log.info("$runtimeType::slotCard()");
 
-    currentCard = null;
-
-    model.slotCard(detail);
+    // only kill currentCard if the slotting works (slots aren't full, etc.)
+    if (model.slotCard(detail)) {
+      currentCard = null;
+    }
   }
 
   void unslotCard(Event event, var detail, Element target) {
