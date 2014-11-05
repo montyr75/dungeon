@@ -5,6 +5,7 @@ import 'dart:html';
 import 'global.dart';
 import 'cards.dart';
 import 'deck.dart';
+import 'slot.dart';
 
 @CustomTag('dungeon-model')
 class DungeonModel extends PolymerElement {
@@ -12,7 +13,7 @@ class DungeonModel extends PolymerElement {
   static const String ENCOUNTERS_DATA_URL = "resources/data/encounters.json";
 
   List<Deck<Card>> _encounters;
-  @observable List<Card> slots = toObservable(new List.filled(12, null));
+  @observable List<Slot> slots = toObservable(new List<Slot>.generate(12, (int index) => new Slot()));
 
   DungeonModel.created() : super.created();
 
@@ -39,40 +40,39 @@ class DungeonModel extends PolymerElement {
   }
 
   void discardEncounterCard(Card card) {
-    card.slotIndex = null;
+    card.slot = null;
     _encounters[card.level - 1].discard(card);
   }
 
   void returnCardToDeck(Card card) {
-    card.slotIndex = null;
+    card.slot = null;
     _encounters[card.level - 1].add(card);
   }
 
-  bool slotCard(Card card) {
+  bool slotMonsterCard(Monster monster) {
     // returns true if slotting was successful
 
-    if (card.slotIndex != null) {
-      slots[card.slotIndex] = card;
+    if (monster.slot != null) {
+      monster.slot.monster = monster;
       return true;
     }
 
-    for (int i = 0; i < slots.length; i++) {
-      if (slots[i] == null) {
-        slots[i] = card;
-        card.slotIndex = i;
-        return true;
-      }
+    Slot slot = slots.where((Slot s) => s.monster == null).first;
+    if (slot != null) {
+      slot.monster = monster;
+      monster.slot = slot;
+      return true;
     }
 
-    // if we get here, there was nowhere for the card to go
+    // if we get here, there was nowhere for the monster card to go
     return false;
   }
 
-  Card unslotCard(int index) {
-    Card card = slots[index];
-    slots[index] = null;
+  Monster unslotMonsterCard(int index) {
+    Monster monster = slots[index].monster;
+    slots[index].monster = null;
 
-    return card;
+    return monster;
   }
 
   Card _createCardInstance(Map card) {

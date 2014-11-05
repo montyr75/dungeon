@@ -47,25 +47,25 @@ class AppView extends PolymerElement {
     model.returnCardToDeck(detail);
   }
 
-  void slotCard(Event event, Card detail, Element target) {
-    log.info("$runtimeType::slotCard()");
+  void slotMonsterCard(Event event, Monster detail, Element target) {
+    log.info("$runtimeType::slotMonsterCard()");
 
     // only kill currentCard if the slotting works (slots aren't full, etc.)
-    if (model.slotCard(detail)) {
+    if (model.slotMonsterCard(detail)) {
       currentCard = null;
     }
   }
 
-  void unslotCard(Event event, var detail, Element target) {
-    log.info("$runtimeType::unslotCard()");
+  void unslotMonsterCard(Event event, var detail, Element target) {
+    log.info("$runtimeType::unslotMonsterCard()");
 
     int index = int.parse(target.dataset['index']);
 
-    if (currentCard != null || model.slots[index] == null) {
+    if (currentCard != null || model.slots[index].monster == null) {
       return;
     }
 
-    currentCard = model.unslotCard(index);
+    currentCard = model.unslotMonsterCard(index);
   }
 }
 

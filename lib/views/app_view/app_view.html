@@ -64,9 +64,9 @@
             <h4 style="margin-left: 15px;">Slots</h4>
             <table class="slots" style="width: 100%;">
               <tbody>
-                <tr template repeat="{{card in model.slots | enumerate}}" data-index="{{card.index}}" on-tap="{{unslotCard}}">
-                  <td style="width: 30px; text-align: right;">{{card.index + 1}}</td>
-                  <td class="slot">{{card.value.name}}</td>
+                <tr template repeat="{{slot in model.slots | enumerate}}" data-index="{{slot.index}}" on-tap="{{unslotMonsterCard}}">
+                  <td style="width: 30px; text-align: right;">{{slot.index + 1}}</td>
+                  <td class="slot">{{slot.value.monster.name}}</td>
                 </tr>
               </tbody>
             </table>
@@ -82,7 +82,7 @@
               <paper-button raised on-tap="{{drawEncounterCard}}" data-level="6" disabled?="{{currentCard != null}}">Level 6</paper-button>
             </div>
 
-            <card-view card="{{currentCard}}" hidden?="{{currentCard == null}}" on-discard="{{discard}}" on-return-to-deck="{{returnToDeck}}" on-slot="{{slotCard}}"></card-view>
+            <card-view card="{{currentCard}}" hidden?="{{currentCard == null}}" on-discard="{{discard}}" on-return-to-deck="{{returnToDeck}}" on-slot="{{slotMonsterCard}}"></card-view>
           </div>
         </core-drawer-panel>
       </div>
