@@ -6,4 +6,5 @@ import 'cards.dart';
 class Slot extends Object with Observable {
   @observable Monster monster;
 //  @observable List<Treasure> treasures;
+// Player player;
 }

@@ -11,9 +11,10 @@ import 'slot.dart';
 class DungeonModel extends PolymerElement {
 
   static const String ENCOUNTERS_DATA_URL = "resources/data/encounters.json";
+  static const int NUM_SLOTS = 12;
 
   List<Deck<Card>> _encounters;
-  @observable List<Slot> slots = toObservable(new List<Slot>.generate(12, (int index) => new Slot()));
+  @observable List<Slot> slots = toObservable(new List<Slot>.generate(NUM_SLOTS, (int index) => new Slot()));
 
   DungeonModel.created() : super.created();
 
@@ -57,7 +58,7 @@ class DungeonModel extends PolymerElement {
       return true;
     }
 
-    Slot slot = slots.where((Slot s) => s.monster == null).first;
+    Slot slot = slots.firstWhere((Slot s) => s.monster == null);
     if (slot != null) {
       slot.monster = monster;
       monster.slot = slot;
