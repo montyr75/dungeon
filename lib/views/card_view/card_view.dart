@@ -65,8 +65,6 @@ class CardView extends PolymerElement {
     int attackRoll = _rollDie(6) + _rollDie(6);
 
     switch (attackRoll) {
-      case 0:
-      case 1:
       case 2:
       case 3:
       case 4:
